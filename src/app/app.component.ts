@@ -13,11 +13,11 @@ export class AppComponent {
   @ViewChildren('user', { read: ElementRef })
   renderedUsers: QueryList<ElementRef>;
   timeoutId = new Subject();
-  selectedId = 9;
+  selectedId = 7;
 
   constructor(private http: HttpClient) {}
 
-  getData() {
+  public getData():void {
     this.http
       .get('https://jsonplaceholder.typicode.com/users')
       .subscribe((users) => {
@@ -27,7 +27,7 @@ export class AppComponent {
       });
   }
 
-  scrollTo(i: number) {
+  public scrollTo(i: number): void {
     console.log(typeof this.renderedUsers.toArray());
 
     //this one with setTimeout()
@@ -52,7 +52,7 @@ export class AppComponent {
       });
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     this.timeoutId.next(undefined);
     this.timeoutId.complete();
   }
