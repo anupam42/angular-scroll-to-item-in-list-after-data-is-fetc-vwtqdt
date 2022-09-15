@@ -1,0 +1,17 @@
+<hello name="{{ name }}"></hello>
+<p>Start editing to see some magic happen :)</p>
+
+<button (click)="getData()">Get Data</button>
+
+<ul *ngIf="users">
+  <li *ngFor="let userDetail of users; let i = index">
+    <div
+      #user
+      [ngStyle]="{ background: userDetail.id === selectedId ? 'red' : '' }"
+    >
+      <h1>{{ userDetail.name }} {{ i }}</h1>
+      <h2>{{ userDetail.username }}</h2>
+      <h3>{{ userDetail.email }}</h3>
+    </div>
+  </li>
+</ul>
